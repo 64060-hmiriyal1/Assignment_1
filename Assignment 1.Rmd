@@ -1,0 +1,58 @@
+---
+title: "R Notebook"
+output: pdf_document
+---
+
+#loading library
+```{r}
+library(tidyverse)
+```
+
+#loading dataset
+```{r}
+loan_approval <- read.csv("C:/Users/santo/OneDrive/Desktop/Fundamental of machinelearning/Assignment_1/loan_approval_dataset.csv")
+head(loan_approval)
+```
+#Explanation
+#This code reads a CSV file containing loan approval data into an R data frame named "loan_approval" and then displays the first few rows of the dataset for a quick overview of the data.
+```{r}
+quantitative_vars <- c("loan_amount", "loan_term", "cibil_score")
+quantitative_stats <- summary(loan_approval[, quantitative_vars])
+print("Descriptive Statistics for Quantitative Variables:")
+print(quantitative_stats)
+```
+#Explanation
+#This code provides descriptive statistics (summary statistics) for specific quantitative variables in the "loan_approval" data frame and quantitative variables in the dataset.
+```{r}
+categorical_var <- c("education","self_employed", "loan_status")
+categorical_summary <- table(loan_approval[, categorical_var])
+print("Summary for Categorical Variable:")
+print(categorical_summary)
+```
+#Explanation
+#This code provides categorical statistics (summary statistics) for specific categorical variables in the "loan_approval" data frame and categorical variables in the dataset.
+```{r}
+#Transform the "loan_amount" variable by adding a constant value
+constant_value <- 1000000
+loan_amount_transformed <- loan_approval$loan_amount + constant_value
+#Display the first few rows of the dataset after transformation
+print("Dataset after transforming 'loan_amount':")
+print(head(loan_amount_transformed))
+```
+#Explanation
+#This code shows how to transform a variable in a dataset by adding a constant value. It adds 1,000,000 to each observation in the "loan_amount" variable and displays the first few rows of the dataset after this transformation.
+```{r}
+# Plot histogram for the distribution of "income_annum"
+hist(loan_approval$no_of_dependents)
+```
+#Explanation
+#The resulting plot will show the distribution of the "no_of_dependents" variable, giving insights into the number of dependents for individuals in the dataset. Histograms are useful for visualizing the shape and spread of a distribution and identifying patterns in the data.
+```{r}
+# Plot scatterplot between "income_annum" and "loan_amount"
+plot(loan_approval$income_annum,loan_approval$loan_amount)
+```
+#Explanation
+#The graph shows the relationship between "income_annum" and "loan_amount" in the "loan_approval" dataset. x-coordinate corresponding to the "income_annum" value and the y-coordinate corresponding to the "loan_amount" value.This type of plot is useful for identifying patterns or trends between two numeric variables.
+
+
+
